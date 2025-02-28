@@ -16,4 +16,7 @@ class HTMLNode:
         return " ".join([f'{key}="{value}"' for key, value in self.props.items()])
     
     def __repr__(self):
-        return f"{self.tag}({self.value}, {self.children}, {self.props})"
+        return f"{self.tag}:(\n  Value: {self.value},\n  Children: {self.children},\n  Props: {self.props}\n)"
+    
+    def __eq__(self, comparison):
+        return self.tag == comparison.tag and self.value == comparison.value and self.children == comparison.children and self.props == comparison.props
