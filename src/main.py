@@ -1,11 +1,14 @@
 from textnode import TextNode, TextType
 from htmlnode import HTMLNode
+from leafnode import LeafNode
+from parentnode import ParentNode
 
 def main():
-    test = TextNode('Hello', TextType.NORMAL, 'https://www.google.com')
-    test2 = HTMLNode('h1', 'Hello', ['test'], {'class': 'header'})
-    print(test)
-    print(test2)
+    grandchild_node = LeafNode("b", "grandchild")
+    child_node = ParentNode("span", [grandchild_node])
+    parent_node = ParentNode("div", [child_node])
+
+    print(parent_node.to_html())
 
 
 if __name__ == '__main__':
